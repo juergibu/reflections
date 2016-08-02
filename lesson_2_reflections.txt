@@ -1,0 +1,72 @@
+What happens when you initialize a repository? Why do you need to do it?
+
+	git metadata is initialised
+	no files are committed
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+
+	Different from working directory
+		Staging area holds a version (from the time of the add),
+		working directory may be newer
+		Staging area holds all the changes that should be committed
+	Different from repository
+		Changes in the staging area are not tracked
+		git commit then commits all files in the staging area
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+	Add all files included in that change to the staging area
+	Then commit
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+	Alternative version 
+	Additional features
+	Bug fix
+
+How do the diagrams help you visualize the branch structure?
+
+	The tree structure makes it easier to see, what I can see (which commits)
+	and where the branches are.
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+	all changes from both branches appear in the resulting branch
+ 
+What are the pros and cons of Git's automatic merging vs. always doing merges
+manually?
+
+	Sometimes it is easy to merge automatically, then git does the work for you.
+	Merging can break things, in this case, manual merging is the only solution.
+
+----
+
+useful commands
+
+----
+
+git checkout -b new_branch_name
+	is equivalent to
+git branch new_branch_name
+git checkout new_branch_name
+
+
+merge coins into master
+
+git checkout master 	# switch to master branch
+git merge master coins	# merge coins into master (git always merges into the checked out branch)
+git branch -d coins	# delete the coins branch (the label, not the commits)
+
+git show commmit_id
+	diff a commit with its parent
+
+git merge --abort
+	restore versions of the files before the merge (after a merge conflict)
+
+Tell Git to use osxkeychain helper using the global credential.helper config:
+git config --global credential.helper osxkeychain
+# Set git to use the osxkeychain credential helper
